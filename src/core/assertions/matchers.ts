@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {Arg} from '../../types';
+import { Arg } from '../../types';
 
 export const matchers = (actual: Arg) => {
   return {

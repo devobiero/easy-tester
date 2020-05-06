@@ -3,7 +3,7 @@ export type CallBackFunction = {
   fn: () => void;
 };
 
-export type Arg = boolean | object;
+export type Arg = boolean | object | number | string;
 
 export type AssertTrue = { toBeTruthy(): void };
 
@@ -12,7 +12,3 @@ export type AssertEqual = { toEqual(expected: Arg): void };
 export type AssertFalse = { toBeFalsy(): void };
 
 export type Assert = AssertTrue & AssertFalse & AssertEqual;
-
-
-
-
