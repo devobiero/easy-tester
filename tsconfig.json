@@ -12,5 +12,6 @@
       "src/types/custom.d.ts"
     ]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["**/*.spec.*"]
 }

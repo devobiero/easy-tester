@@ -1,12 +1,14 @@
 {
   "name": "@devobiero/easy-tester",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "dist/bin/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],
+  "bin": {
+    "easy-test": "dist/bin/cli.js"
+  },
   "scripts": {
     "build": "rm -rf dist && tsc",
     "prepublish": "yarn build",

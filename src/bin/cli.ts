@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import path from 'path';
 import { loadQueue, run, summary } from '../core';
 import { getFilesRecursively } from '../utils';
