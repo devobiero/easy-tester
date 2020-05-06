@@ -7,7 +7,7 @@
     "dist/**/*"
   ],
   "bin": {
-    "easy-test": "dist/bin/cli.js"
+    "easy-test": "bin/index.js"
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
@@ -21,11 +21,13 @@
   },
   "author": "George Obiero",
   "license": "ISC",
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^13.13.4",
     "husky": "^4.2.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
     "tslint": "^6.1.2",
     "typescript": "^3.8.3"
   },

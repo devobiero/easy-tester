@@ -7,6 +7,7 @@ import { CallBackFunction } from '../types';
  * @param fn
  */
 export const enqueue = (name: string, fn: any) => {
+  // @ts-ignore
   global.easy.queue.push({ name, fn });
 };
 
@@ -14,5 +15,6 @@ export const enqueue = (name: string, fn: any) => {
  * Finds all tests enqueued
  */
 export const loadQueue: () => CallBackFunction[] = () => {
+  // @ts-ignore
   return global.easy.queue;
 };

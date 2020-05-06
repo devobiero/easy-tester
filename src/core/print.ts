@@ -10,6 +10,7 @@ export const summary = () => {
   log(`  Fail: ${getCount(Status.Fail)}`);
   log(`  Disabled: ${getCount(Status.Disabled)}\n\n`);
 
+  // @ts-ignore
   if (global.easy.summary.fail > 0) {
     process.exit(1);
   } else {

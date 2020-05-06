@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "target": "es5",
     "module": "commonjs",
     "outDir": "./dist",
@@ -8,10 +9,15 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "typeRoots": [
-      "node_modules/@types",
-      "src/types/custom.d.ts"
+      "node_modules/@types"
     ]
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.spec.*"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "**/*.spec.*",
+    "node_modules",
+    "dist"
+  ]
 }
