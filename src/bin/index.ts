@@ -1,7 +1,15 @@
 import path from 'path';
-import { enqueue, loadQueue, matchers } from '../core';
-import { run } from '../core/execute';
-import { getFilesRecursively } from '../utils/getFilesRecursively';
+import { loadQueue, run, summary } from '../core';
+import { getFilesRecursively } from '../utils';
+
+global.easy = {
+  queue: [],
+  summary: {
+    success: 0,
+    fail: 0,
+    disabled: 0,
+  },
+};
 
 const config = {
   rootDir: 'dist',
@@ -9,6 +17,7 @@ const config = {
   coveragePathIgnorePatterns: [],
 };
 
+// switch working dir
 const dirPath = path.join(__dirname, '../../', config.rootDir);
 
 // Get the list of files
@@ -25,4 +34,8 @@ files.forEach((file) => {
 
 const tests = loadQueue();
 
+// run all tests
 run(tests);
+
+// print summary of results on the console
+summary();

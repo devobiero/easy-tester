@@ -1,4 +1,6 @@
-import { CallBackFunction } from '../types';
+import { CallBackFunction, Status } from '../types';
+import { count } from './count';
+import { log } from './log';
 
 /**
  * runs all the tests in the `allTests` array
@@ -8,15 +10,12 @@ export const run = (allTests: CallBackFunction[]) => {
   for (const t of allTests) {
     try {
       t.fn();
-      // If there is no exception
-      // that means it ran correctly
-      console.log('✅', t.name);
+      log(`✅ ${t.name}`);
+      count(Status.Success);
     } catch (e) {
-      // Exceptions, if any, are caught
-      // and the test is considered failed
-      console.log('❌', t.name);
-      // log the stack of the error
-      console.log(e.stack);
+      log(`❌ ${t.name}`);
+      count(Status.Fail);
+      log(e.stack);
     }
   }
 };
