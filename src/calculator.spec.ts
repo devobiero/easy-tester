@@ -1,7 +1,6 @@
 import { add, subtract } from './calculator';
 import { expect, test } from './index';
 
-
 test('should add two numbers', () => {
   expect(add(1, 2)).toEqual(3);
 });

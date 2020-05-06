@@ -1,10 +1,20 @@
-import { enqueue, findAll, matchers } from '../core';
+import path from 'path';
+import { enqueue, loadQueue, matchers } from '../core';
 import { run } from '../core/execute';
+import { getFilesRecursively } from '../utils/getFilesRecursively';
 
-global.queue = [];
+const config = {
+  rootDir: 'dist',
+  testRegex: 'spec.js',
+  coveragePathIgnorePatterns: [],
+};
 
-// Get the list of files from the command line arguments
-const files = process.argv.slice(2);
+const dirPath = path.join(__dirname, '../../', config.rootDir);
+
+// Get the list of files
+const files = process.argv[2]
+  ? process.argv.slice(2)
+  : getFilesRecursively(dirPath, config.testRegex);
 
 // Load each file using `require`
 files.forEach((file) => {
@@ -13,6 +23,6 @@ files.forEach((file) => {
   require(file);
 });
 
-const tests = findAll();
+const tests = loadQueue();
 
 run(tests);

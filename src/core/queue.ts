@@ -7,12 +7,15 @@ import { CallBackFunction } from '../types';
  * @param fn
  */
 export const enqueue = (name: string, fn: any) => {
+  if (!global.queue) {
+    global.queue = [];
+  }
   global.queue.push({ name, fn });
 };
 
 /**
  * Finds all tests enqueued
  */
-export const findAll: () => CallBackFunction[] = () => {
+export const loadQueue: () => CallBackFunction[] = () => {
   return global.queue;
 };
