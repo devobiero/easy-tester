@@ -5,3 +5,4 @@ export * from './queue';
 export * from './print';
 export * from './execute';
 export * from './log';
+export * from './count';
