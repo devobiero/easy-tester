@@ -1,0 +1,42 @@
+{
+  "name": "easy-tester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier --write 'src/**/*.{ts,js,json}'",
+    "fix:tslint": "tslint --project . --fix",
+    "lint": "run-s lint:*",
+    "lint:prettier": "prettier -c 'src/**/*.{ts,js,json}'",
+    "lint:tslint": "tslint --project ."
+  },
+  "author": "George Obiero",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "husky": "^4.2.5",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.ts": [
+        "yarn lint:prettier"
+      ],
+      "!(*spec.).ts": [
+        "yarn lint:tslint"
+      ],
+      "*.{js,json,css,md}": [
+        "yarn lint:prettier"
+      ]
+    }
+  }
+}
