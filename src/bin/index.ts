@@ -28,7 +28,7 @@ const files = process.argv[2]
 // Load each file using `require`
 files.forEach((file) => {
   // Once a file is loaded, it's tests are
-  // added to the `tests` singleton variable
+  // added to the `queue` singleton variable
   require(file);
 });
 

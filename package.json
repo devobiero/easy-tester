@@ -1,9 +1,15 @@
 {
-  "name": "easy-tester",
+  "name": "@devobiero/easy-tester",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/bin/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
+    "build": "rm -rf dist && tsc",
+    "prepublish": "yarn build",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier --write 'src/**/*.{ts,js,json}'",
     "fix:tslint": "tslint --project . --fix",
