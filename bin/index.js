@@ -1,9 +1,17 @@
 #!/usr/bin/env node
 
-// if spec.ts regexPattern is passed
-// check if ts-node package is registered
-// if not exit with an error message
+const { isTS } =  require("../dist/utils");
+const { log } = require("../dist/core");
 
-require('ts-node').register();
+const args = process.argv.slice(2);
+
+if (isTS(args)) {
+  try {
+    require('ts-node').register();
+  } catch (e) {
+    log('❌ ts-node is missing');
+    process.exit(1);
+  }
+}
 
 require('../dist/cli').run();
