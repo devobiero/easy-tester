@@ -1,0 +1,13 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "testing easy test runner",
+  "scripts": {
+    "test": "easy-test --rootDir=calculator --testRegex=spec.ts"
+  },
+  "devDependencies": {
+    "@devobiero/easy-tester": "1.0.4"
+  },
+  "author": "",
+  "license": "ISC"
+}
