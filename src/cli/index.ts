@@ -1,6 +1,13 @@
-import path from 'path';
-import { loadQueue, run, summary } from '../core';
-import { getFilesRecursively } from '../utils';
+import {
+  configure,
+  loadFiles,
+  loadQueue,
+  run,
+  summary,
+  validateArgs,
+} from '../core';
+import { isFileConfig } from '../types';
+import { compose, findPath, getFilesRecursively } from '../utils';
 
 global.easy = {
   queue: [],
@@ -11,30 +18,24 @@ global.easy = {
   },
 };
 
-const config = {
-  rootDir: 'examples',
-  testRegex: 'spec.ts'
-};
+const args = process.argv.slice(2);
+const config: any = configure(args);
 
 // switch working dir
-const dirPath = path.join(__dirname, '../../', config.rootDir);
+const dirPath = findPath(config);
 
-// Get the list of files
-const files = process.argv[2]
-  ? process.argv.slice(2)
-  : getFilesRecursively(dirPath, config.testRegex);
+const filterFiles = () => {
+  // @ts-ignore
+  return isFileConfig(config) ? getFilesRecursively(dirPath, config.name) : getFilesRecursively(dirPath, config.testRegex);
+};
 
-// Load each file using `require`
-files.forEach((file) => {
-  // Once a file is loaded, it's tests are
-  // added to the `queue` singleton variable
-  require(file);
-});
+const execute = (...fns: any[]) => fns.reduce(compose);
 
-const tests = loadQueue();
-
-// run all tests
-run(tests);
-
-// print summary of results on the console
-summary();
+execute(
+    summary,
+    run,
+    loadQueue,
+    loadFiles,
+    filterFiles,
+    validateArgs
+)(args);

@@ -7,7 +7,6 @@ import { CallBackFunction } from '../types';
  * @param fn
  */
 export const enqueue = (name: string, fn: any) => {
-  // @ts-ignore
   global.easy.queue.push({ name, fn });
 };
 
@@ -15,6 +14,17 @@ export const enqueue = (name: string, fn: any) => {
  * Finds all tests enqueued
  */
 export const loadQueue: () => CallBackFunction[] = () => {
-  // @ts-ignore
   return global.easy.queue;
+};
+
+/**
+ *  Load each file using `require`, Once a file is loaded, it's tests are
+ *  added to the `queue` singleton variable
+ *
+ * @param files
+ */
+export const loadFiles = (files: any[]) => {
+  files.forEach((file) => {
+    require(file);
+  });
 };

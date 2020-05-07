@@ -6,3 +6,5 @@ export * from './print';
 export * from './execute';
 export * from './log';
 export * from './count';
+export * from './validateArgs';
+export * from './configure';

@@ -1,3 +1,5 @@
+export * from './custom';
+
 export type CallBackFunction = {
   name: string;
   fn: () => void;
@@ -24,3 +26,28 @@ export type Summary = {
   fail: number;
   disabled: number;
 };
+
+export type DirConfig = {
+  rootDir: string;
+  files?: any[];
+};
+
+export type FileConfig = DirConfig & { name: string | null };
+
+export type RegexConfig = DirConfig & { testRegex: string | null };
+
+export type Config = FileConfig | RegexConfig;
+
+export function isFileConfig(config: Config): config is Config {
+  return (
+    (config as FileConfig).name !== undefined &&
+    (config as FileConfig).name !== ''
+  );
+}
+
+export function isRegexConfig(config: Config): config is Config {
+  return (
+    (config as RegexConfig).testRegex !== undefined &&
+    (config as RegexConfig).testRegex !== ''
+  );
+}

@@ -6,3 +6,5 @@ export * from './isFile';
 export * from './isTestFile';
 export * from './repeat';
 export * from './ident';
+export * from './findDirPath';
+export * from './compose';
