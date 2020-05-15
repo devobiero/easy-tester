@@ -27,6 +27,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install dependencies
         run: yarn
+      - name: Create .nmprc file
+        run: echo "//registry.npmjs.org/:_authToken=${{secrets.EASY_TESTER_TOKEN}}" >> .npmrc
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.EASY_TESTER_TOKEN}}
