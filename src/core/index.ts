@@ -3,7 +3,7 @@ export * from './beforeEach';
 export * from './assertions';
 export * from './queue';
 export * from './print';
-export * from './execute';
+export * from './run';
 export * from './log';
 export * from './count';
 export * from './validateArgs';
