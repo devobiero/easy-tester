@@ -28,7 +28,11 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Create .nmprc file
-        run: echo "//registry.npmjs.org/:_authToken=${{secrets.EASY_TESTER_TOKEN}}" >> .npmrc
+        run: |
+          echo "registry=https://registry.yarnpkg.com/" > .npmrc
+          echo "@devobiero:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{secrets.EASY_TESTER_TOKEN}}" >> .npmrc
+          echo "always-auth=true" >> .npmrc
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.EASY_TESTER_TOKEN}}
