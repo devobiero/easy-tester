@@ -1,3 +1,6 @@
+
+![](https://github.com/devobiero/easy-tester/workflows/Easy%20tester%20CI/badge.svg)
+
 ## Easy Tester
 
 A simple nodejs test runner with zero external dependencies.
