@@ -19,7 +19,7 @@ global.easy = {
 };
 
 const args = process.argv.slice(2);
-const config: any = configure(args);
+const config = configure(args);
 
 // switch working dir
 const dirPath = findPath(config);

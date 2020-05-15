@@ -1,5 +1,5 @@
 import { CallBackFunction } from '../types';
 
-export const beforeEach = (cb: CallBackFunction) => {
+export const beforeEach = (cb: any) => {
   console.log(cb);
 };
