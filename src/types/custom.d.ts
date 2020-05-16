@@ -1,4 +1,4 @@
-import { CallBackFunction, Summary } from './index';
+import { Suite, Summary } from './index';
 
 declare global {
   namespace NodeJS {
@@ -6,7 +6,7 @@ declare global {
       expect: any;
       test: (name: string, fn: () => void) => void;
       easy: {
-        queue: CallBackFunction[];
+        group: Suite[];
         summary: Summary;
       };
     }

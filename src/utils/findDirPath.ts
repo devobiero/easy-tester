@@ -16,7 +16,7 @@ export const findPath = (config: Config) => {
 
     return dirPath;
   } catch (e) {
-    log('core path found');
+    log('Core path found...');
     return path.join(__dirname, '../../', config.rootDir);
   }
 };

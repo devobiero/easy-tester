@@ -51,3 +51,13 @@ export function isRegexConfig(config: Config): config is Config {
     (config as RegexConfig).testRegex !== ''
   );
 }
+
+export type VoidFunction = () => void;
+
+export type Suite = {
+  name: string;
+  file?: string;
+  afterEach?: VoidFunction[];
+  tests: CallBackFunction[];
+  fn: VoidFunction;
+};

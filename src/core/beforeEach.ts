@@ -1,5 +1,12 @@
-import { CallBackFunction } from '../types';
+import { activeSuite } from './queue';
 
-export const beforeEach = (cb: any) => {
-  console.log(cb);
+/**
+ * add beforeEach function at the beginning of the queue
+ * so that it can be processed first
+ *
+ * @param fn
+ */
+export const beforeEach = (fn: () => void) => {
+  const suite = activeSuite();
+  suite.tests.unshift({ fn, name: '' });
 };

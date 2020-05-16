@@ -1,5 +1,5 @@
 import { add, subtract } from './calculator';
-import { beforeEach, describe, expect, test } from '../../src';
+import { beforeEach, describe, expect, test } from '../src';
 
 describe('Calculator', () => {
   beforeEach(() => {});
@@ -10,13 +10,5 @@ describe('Calculator', () => {
 
   test('should subtract two numbers', () => {
     expect(subtract(3, 2)).toEqual(1);
-  });
-
-  test('should be truthy', () => {
-    expect(true).toBeTruthy();
-  });
-
-  test('should be falsy', () => {
-    expect(false).toBeFalsy();
   });
 });

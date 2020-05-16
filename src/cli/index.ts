@@ -10,7 +10,7 @@ import { isFileConfig } from '../types';
 import { compose, findPath, getFilesRecursively } from '../utils';
 
 global.easy = {
-  queue: [],
+  group: [],
   summary: {
     success: 0,
     fail: 0,
