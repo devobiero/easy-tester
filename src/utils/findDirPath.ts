@@ -1,10 +1,10 @@
 import assert from 'assert';
 import path from 'path';
 import { log } from '../core';
-import { Config } from '../types';
+import { TestFileConfig } from '../types';
 import { isDirectory } from './isDirectory';
 
-export const findPath = (config: Config) => {
+export const findPath = (config: TestFileConfig) => {
   try {
     const dirPath = path.join(
       // @ts-ignore

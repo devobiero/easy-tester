@@ -1,4 +1,4 @@
-import { Suite } from '../types';
+import { Config, Suite } from '../types';
 
 /**
  * enqueue function accepts a name and a function
@@ -32,10 +32,10 @@ export const createSuite = (suite: Suite) => {
 };
 
 /**
- * Finds all tests enqueued
+ * Finds all tests and configurations enqueued
  */
-export const loadQueue: () => Suite[] = () => {
-  return global.easy.group;
+export const loadConfig = (): Config => {
+  return global.easy;
 };
 
 /**

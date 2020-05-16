@@ -1,6 +1,6 @@
-import { Config, isFileConfig, isRegexConfig } from '../types';
+import { isFileConfig, TestFileConfig } from '../types';
 
-export const configure = (args: string[]): Config => {
+export const configure = (args: string[]): TestFileConfig => {
   const config = {
     rootDir: '',
     name: '',

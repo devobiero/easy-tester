@@ -1,7 +1,7 @@
 import {
   configure,
+  loadConfig,
   loadFiles,
-  loadQueue,
   run,
   summary,
   validateArgs,
@@ -34,7 +34,7 @@ const execute = (...fns: any[]) => fns.reduce(compose);
 execute(
     summary,
     run,
-    loadQueue,
+    loadConfig,
     loadFiles,
     filterFiles,
     validateArgs
