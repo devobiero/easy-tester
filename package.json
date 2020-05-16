@@ -1,11 +1,12 @@
 {
   "name": "@devobiero/easy-tester",
-  "version": "1.0.7",
+  "version": "1.0.11",
   "description": "",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "bin/**/*"
   ],
   "bin": {
     "easy-test": "bin/index.js"
