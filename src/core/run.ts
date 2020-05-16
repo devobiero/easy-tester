@@ -1,6 +1,6 @@
 import { CallBackFunction, Status } from '../types';
-import { count } from './count';
-import { log } from './log';
+import { count } from './report';
+import { log } from './report';
 
 /**
  * runs all the tests in the `allTests` array

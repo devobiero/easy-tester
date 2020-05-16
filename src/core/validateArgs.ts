@@ -1,4 +1,4 @@
-import { log } from './log';
+import { log } from './report';
 
 export const validateArgs = (args: string[]) => {
   let noDirSupplied = true;

@@ -1,5 +1,5 @@
-import { Status } from '../types';
-import { repeat } from '../utils';
+import { Status } from '../../types';
+import { repeat } from '../../utils';
 import { getCount } from './count';
 import { log } from './log';
 

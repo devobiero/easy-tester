@@ -1,4 +1,4 @@
-import { Status } from '../types';
+import { Status } from '../../types';
 
 export const count = (status: Status) => {
   switch (status) {
