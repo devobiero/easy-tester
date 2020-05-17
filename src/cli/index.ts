@@ -1,9 +1,9 @@
 import {
   configure,
-  loadConfig,
+  getConfig,
   loadFiles,
-  summary,
   run,
+  summary,
   validateArgs,
 } from '../core';
 import { compose, filterFiles, findPath } from '../utils';
@@ -19,7 +19,7 @@ const execute = (...fns: any[]) => fns.reduce(compose);
 execute(
   summary,
   run,
-  loadConfig,
+  getConfig,
   loadFiles,
   filterFiles,
   findPath,

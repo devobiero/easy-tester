@@ -1,4 +1,4 @@
-import { createSuite } from './queue';
+import { createSuite } from './manager';
 
 export const describe = (name: string, fn: () => void) => {
   createSuite({

@@ -1,19 +1,4 @@
-import { Config, Suite, TestStatus } from '../types';
-
-/**
- * enqueue function accepts a name and a function
- * it pushes the name and function as an object to the `tests` property
- * @param name
- * @param fn
- */
-export const enqueue = (name: string, fn: () => void) => {
-  const suite = activeSuite();
-  suite.tests.push({
-    name,
-    fn,
-    status: TestStatus.Queued,
-  });
-};
+import { Config, Suite } from '../types';
 
 /**
  * Test suites are held in a queue, the last one is the active suite
@@ -38,7 +23,7 @@ export const createSuite = (suite: Suite) => {
 /**
  * Finds all tests and configurations enqueued
  */
-export const loadConfig = (): Config => {
+export const getConfig = (): Config => {
   return global.easy;
 };
 
