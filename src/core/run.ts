@@ -1,5 +1,17 @@
-import { Config, TestStatus } from '../types';
+import { Config, TestFunction, TestStatus } from '../types';
+import { repeat } from '../utils';
 import { log } from './report';
+
+const fail = (t: TestFunction, e: Error) => {
+  t.status = TestStatus.Fail;
+  log(`${repeat(' ', 4)} ❌ ${t.name}
+  ${e.stack}`);
+};
+
+const pass = (t: TestFunction) => {
+  log(`${repeat(' ', 4)} ✅ ${t.name}`);
+  t.status = TestStatus.Success;
+};
 
 /**
  * runs all the tests in the `groups` array while at the same time
@@ -9,18 +21,16 @@ import { log } from './report';
  */
 export const run = (easy: Config) => {
   for (const group of easy.group) {
+    log(`📥 ${group.name}`);
     group.hooks.before.all();
     for (const t of group.tests) {
       try {
         group.hooks.before.each();
         t.fn();
+        pass(t);
         group.hooks.after.each();
-        t.status = TestStatus.Success;
       } catch (e) {
-        t.status = TestStatus.Fail;
-        log(`
-        ❌ ${t.name}
-        ${e.stack}`);
+        fail(t, e);
       }
     }
     group.hooks.after.all();

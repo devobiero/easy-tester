@@ -2,8 +2,8 @@ import {
   configure,
   loadConfig,
   loadFiles,
-  run,
   summary,
+  run,
   validateArgs,
 } from '../core';
 import { compose, filterFiles, findPath } from '../utils';

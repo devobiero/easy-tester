@@ -1,6 +1,6 @@
 import { repeat } from './repeat';
 
-const indent = (n: number) => repeat('    ', n);
+export const indent = (n: number) => repeat('    ', n);
 
 /**
  * Indents a string with multiple lines
