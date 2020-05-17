@@ -6,8 +6,7 @@ import {
   summary,
   validateArgs,
 } from '../core';
-import { isFileConfig } from '../types';
-import { compose, findPath, getFilesRecursively } from '../utils';
+import { compose, filterFiles, findPath } from '../utils';
 
 global.easy = {
   group: [],
@@ -19,23 +18,16 @@ global.easy = {
 };
 
 const args = process.argv.slice(2);
-const config = configure(args);
-
-// switch working dir
-const dirPath = findPath(config);
-
-const filterFiles = () => {
-  // @ts-ignore
-  return isFileConfig(config) ? getFilesRecursively(dirPath, config.name) : getFilesRecursively(dirPath, config.testRegex);
-};
 
 const execute = (...fns: any[]) => fns.reduce(compose);
 
 execute(
-    summary,
-    run,
-    loadConfig,
-    loadFiles,
-    filterFiles,
-    validateArgs
+  summary,
+  run,
+  loadConfig,
+  loadFiles,
+  filterFiles,
+  findPath,
+  configure,
+  validateArgs,
 )(args);

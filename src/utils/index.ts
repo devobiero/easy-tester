@@ -9,3 +9,4 @@ export * from './ident';
 export * from './findDirPath';
 export * from './compose';
 export * from './isTS';
+export * from './filterFiles';

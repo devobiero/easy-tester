@@ -13,10 +13,11 @@ export const findPath = (config: TestFileConfig) => {
     );
 
     assert.ok(isDirectory(dirPath));
-
-    return dirPath;
+    config.rootDir = dirPath;
+    return config;
   } catch (e) {
     log('Core path found...');
-    return path.join(__dirname, '../../', config.rootDir);
+    config.rootDir = path.join(__dirname, '../../', config.rootDir);
+    return config;
   }
 };
