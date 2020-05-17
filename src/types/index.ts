@@ -19,7 +19,6 @@ export enum TestStatus {
 
 export type DirConfig = {
   rootDir: string;
-  files?: any[];
 };
 
 export type FileNameConfig = DirConfig & { name: string | null };
