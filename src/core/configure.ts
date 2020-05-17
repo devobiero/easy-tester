@@ -1,5 +1,7 @@
+import { TestFileConfig } from '../types';
+
 export const configure = (args: string[]) => {
-  return args.reduce((config: any, arg) => {
+  return args.reduce((config, arg) => {
     const parts = arg.split('=');
     if (parts.includes('--rootDir')) {
       config.rootDir = parts[1];
@@ -10,8 +12,8 @@ export const configure = (args: string[]) => {
     }
 
     if (parts.includes('--file')) {
-      config.name = parts[1];
+      config.fileName = parts[1];
     }
     return config;
-  }, {});
+  }, {} as TestFileConfig);
 };

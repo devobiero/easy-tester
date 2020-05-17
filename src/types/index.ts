@@ -19,20 +19,15 @@ export enum TestStatus {
 
 export type DirConfig = {
   rootDir: string;
+  testRegex: string;
+  fileName: string;
 };
 
-export type FileNameConfig = DirConfig & { name: string | null };
+export type FileNameConfig = DirConfig & { fileName: string };
 
-export type RegexConfig = DirConfig & { testRegex: string | null };
+export type RegexConfig = DirConfig & { testRegex: string };
 
 export type TestFileConfig = FileNameConfig | RegexConfig;
-
-export function isFileConfig(config: TestFileConfig): config is TestFileConfig {
-  return (
-    (config as FileNameConfig).name !== undefined &&
-    (config as FileNameConfig).name !== ''
-  );
-}
 
 export type TestFunction = {
   name: string;

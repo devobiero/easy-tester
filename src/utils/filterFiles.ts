@@ -1,7 +1,8 @@
-import { isFileConfig, TestFileConfig } from '../types';
+import { DirConfig } from '../types';
 import { getFilesRecursively } from './getFilesRecursively';
 
-export const filterFiles = (config: TestFileConfig) => {
-  // @ts-ignore
-  return isFileConfig(config) ? getFilesRecursively(config.rootDir, config.name) : getFilesRecursively(config.rootDir, config.testRegex);
+export const filterFiles = (config: DirConfig) => {
+  return config.fileName
+    ? getFilesRecursively(config.rootDir, config.fileName)
+    : getFilesRecursively(config.rootDir, config.testRegex);
 };
