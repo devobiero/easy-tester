@@ -1,5 +1,5 @@
 export * from './assertions/matchers';
-export * from './beforeAll';
+export * from './hooks/beforeAll';
 export * from './assertions';
 export * from './queue';
 export * from './report';
@@ -7,6 +7,4 @@ export * from './run';
 export * from './validateArgs';
 export * from './configure';
 export * from './describe';
-export * from './beforeEach';
-export * from './afterAll';
-export * from './afterEach';
+export * from './hooks';

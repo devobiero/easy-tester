@@ -1,4 +1,4 @@
-import { activeSuite } from './queue';
+import { activeSuite } from '../queue';
 
 export const beforeAll = (fn: () => void) => {
   const suite = activeSuite();
