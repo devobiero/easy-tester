@@ -1,10 +1,5 @@
 export * from './custom';
 
-export type CallBackFunction = {
-  name: string;
-  fn: () => void;
-};
-
 export type Arg = boolean | object | number | string;
 
 export type AssertTrue = { toBeTruthy(): void };
@@ -45,12 +40,25 @@ export function isFileConfig(config: TestFileConfig): config is TestFileConfig {
   );
 }
 
+export type TestFunction = {
+  name: string;
+  fn: () => void;
+};
+
 export type VoidFunction = () => void;
 
 export type Suite = {
   name: string;
-  file?: string;
-  afterEach?: VoidFunction[];
-  tests: CallBackFunction[];
-  fn: VoidFunction;
+  hooks: {
+    before: {
+      all: VoidFunction;
+      each: VoidFunction;
+    };
+    after: {
+      all: VoidFunction;
+      each: VoidFunction;
+    };
+  };
+  tests: TestFunction[];
+  cb: VoidFunction;
 };

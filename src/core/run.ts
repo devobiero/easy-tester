@@ -7,16 +7,18 @@ import { count } from './report';
  */
 export const run = (easy: Config) => {
   for (const group of easy.group) {
+    group.hooks.before.all();
     for (const t of group.tests) {
       try {
+        group.hooks.before.each();
         t.fn();
-        if (t.name) {
-          count(Status.Success);
-        }
+        group.hooks.after.each();
+        count(Status.Success);
       } catch (e) {
         count(Status.Fail);
       }
     }
+    group.hooks.after.all();
   }
 
   return easy;

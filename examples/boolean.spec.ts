@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from '../src';
+import { afterEach, beforeEach, describe, expect, test } from '../src';
 
 describe('Booleans', () => {
   beforeEach(() => {});
@@ -10,4 +10,6 @@ describe('Booleans', () => {
   test('should be falsy', () => {
     expect(false).toBeFalsy();
   });
+
+  afterEach(() => {});
 });

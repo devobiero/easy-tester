@@ -8,7 +8,10 @@ import { Config, Suite } from '../types';
  */
 export const enqueue = (name: string, fn: () => void) => {
   const suite = activeSuite();
-  suite.tests.push({ name, fn });
+  suite.tests.push({
+    name,
+    fn,
+  });
 };
 
 /**
@@ -28,7 +31,7 @@ export const activeSuite = () => {
 export const createSuite = (suite: Suite) => {
   global.easy.group.push(suite);
   // load test suite body
-  suite.fn();
+  suite.cb();
 };
 
 /**
@@ -39,7 +42,7 @@ export const loadConfig = (): Config => {
 };
 
 /**
- *  Load each file using `require`, Once a file is loaded, it's fn are
+ *  Load each file using `require`, Once a file is loaded, it's cb are
  *  added to the `groups` singleton variable
  *
  * @param files

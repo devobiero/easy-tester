@@ -1,7 +1,17 @@
 import { add, subtract } from './calculator';
-import { beforeEach, describe, expect, test } from '../src';
+import {
+  beforeEach,
+  beforeAll,
+  describe,
+  expect,
+  test,
+  afterAll,
+  afterEach,
+} from '../src';
 
 describe('Calculator', () => {
+  beforeAll(() => {});
+
   beforeEach(() => {});
 
   test('should add two numbers', () => {
@@ -11,4 +21,8 @@ describe('Calculator', () => {
   test('should subtract two numbers', () => {
     expect(subtract(3, 2)).toEqual(1);
   });
+
+  afterEach(() => {});
+
+  afterAll(() => {});
 });
