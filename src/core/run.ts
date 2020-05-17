@@ -1,9 +1,11 @@
-import { Config, Status } from '../types';
-import { count } from './report';
+import { Config, TestStatus } from '../types';
+import { log } from './report';
 
 /**
- * runs all the tests in the `groups` array
- * If there is no exception, that means it ran correctly
+ * runs all the tests in the `groups` array while at the same time
+ * keeping track of all the pre and post hooks defined
+ *
+ * If there is an exception it means the test ran successfully
  */
 export const run = (easy: Config) => {
   for (const group of easy.group) {
@@ -13,9 +15,12 @@ export const run = (easy: Config) => {
         group.hooks.before.each();
         t.fn();
         group.hooks.after.each();
-        count(Status.Success);
+        t.status = TestStatus.Success;
       } catch (e) {
-        count(Status.Fail);
+        t.status = TestStatus.Fail;
+        log(`
+        ❌ ${t.name}
+        ${e.stack}`);
       }
     }
     group.hooks.after.all();

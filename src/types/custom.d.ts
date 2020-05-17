@@ -1,8 +1,7 @@
-import { Suite, Summary } from './index';
+import { Suite } from './index';
 
 type Config = {
   group: Suite[];
-  summary: Summary;
 };
 
 declare global {

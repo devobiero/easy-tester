@@ -1,5 +1,4 @@
 export * from './assertions/matchers';
-export * from './hooks/beforeAll';
 export * from './assertions';
 export * from './queue';
 export * from './report';

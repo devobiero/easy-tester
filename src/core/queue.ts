@@ -1,4 +1,4 @@
-import { Config, Suite } from '../types';
+import { Config, Suite, TestStatus } from '../types';
 
 /**
  * enqueue function accepts a name and a function
@@ -11,6 +11,7 @@ export const enqueue = (name: string, fn: () => void) => {
   suite.tests.push({
     name,
     fn,
+    status: TestStatus.Queued,
   });
 };
 

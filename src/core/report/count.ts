@@ -1,23 +1,17 @@
-import { Status } from '../../types';
+import { Suite, TestFunction, TestStatus } from '../../types';
 
-export const count = (status: Status) => {
-  switch (status) {
-    case Status.Success:
-      global.easy.summary.success++;
-      break;
-    case Status.Fail:
-      global.easy.summary.fail++;
-      break;
-  }
+export const countByStatus = (allTests: TestFunction[], status: TestStatus) => {
+  return allTests.reduce((total, t) => {
+    if (t.status === status) {
+      total++;
+    }
+    return total;
+  }, 0);
 };
 
-export const getCount = (status: Status) => {
-  switch (status) {
-    case Status.Success:
-      return global.easy.summary.success;
-    case Status.Fail:
-      return global.easy.summary.fail;
-    case Status.Disabled:
-      return global.easy.summary.disabled;
-  }
+export const count = (group: Suite[], status: TestStatus) => {
+  return group.reduce((total, t) => {
+    total += countByStatus(t.tests, status);
+    return total;
+  }, 0);
 };

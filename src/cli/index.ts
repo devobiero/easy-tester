@@ -10,11 +10,6 @@ import { compose, filterFiles, findPath } from '../utils';
 
 global.easy = {
   group: [],
-  summary: {
-    success: 0,
-    fail: 0,
-    disabled: 0,
-  },
 };
 
 const args = process.argv.slice(2);

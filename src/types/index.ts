@@ -10,17 +10,12 @@ export type AssertFalse = { toBeFalsy(): void };
 
 export type Assert = AssertTrue & AssertFalse & AssertEqual;
 
-export enum Status {
+export enum TestStatus {
   Success = 1,
   Fail,
   Disabled,
+  Queued,
 }
-
-export type Summary = {
-  success: number;
-  fail: number;
-  disabled: number;
-};
 
 export type DirConfig = {
   rootDir: string;
@@ -43,6 +38,7 @@ export function isFileConfig(config: TestFileConfig): config is TestFileConfig {
 export type TestFunction = {
   name: string;
   fn: () => void;
+  status: TestStatus;
 };
 
 export type VoidFunction = () => void;
