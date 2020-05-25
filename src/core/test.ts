@@ -1,15 +1,8 @@
 import { It, TestStatus } from '../types';
-import { activeSuite } from './manager';
+import { addTest } from './manager';
 
-/**
- * enqueue function accepts a name and a function
- * it pushes the name and function as an object to the `tests` property
- * @param name
- * @param fn
- */
 const it = (name: string, fn: () => void) => {
-  const suite = activeSuite();
-  suite.tests.push({
+  addTest({
     name,
     fn,
     status: TestStatus.Queued,
@@ -17,13 +10,19 @@ const it = (name: string, fn: () => void) => {
 };
 
 it.only = (name: string, fn: () => void) => {
-  const suite = activeSuite();
-  suite.constraints?.only?.push({ name, fn, status: TestStatus.Queued });
+  addTest({
+    name,
+    fn,
+    status: TestStatus.Only,
+  });
 };
 
 it.skip = (name: string, fn: () => void) => {
-  const suite = activeSuite();
-  suite.constraints?.skip?.push({ name, fn, status: TestStatus.Disabled });
+  addTest({
+    name,
+    fn,
+    status: TestStatus.Disabled,
+  });
 };
 
 export const test: It = it;

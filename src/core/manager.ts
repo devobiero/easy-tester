@@ -1,4 +1,14 @@
-import { Config, Suite } from '../types';
+import { Config, DoneCallback, Suite } from '../types';
+
+/**
+ * enqueue a test with a status
+ * it pushes the name and function as an object to the `tests` property
+ * @param test
+ */
+export const addTest = (test: DoneCallback) => {
+  const suite = activeSuite();
+  suite.tests.push(test);
+};
 
 /**
  * Test suites are held in a queue, the last one is the active suite

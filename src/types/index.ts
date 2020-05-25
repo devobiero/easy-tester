@@ -27,6 +27,7 @@ export enum TestStatus {
   Fail,
   Disabled,
   Queued,
+  Only,
 }
 
 export type DirConfig = {
