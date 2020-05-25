@@ -4,6 +4,7 @@
     "target": "es5",
     "module": "commonjs",
     "outDir": "./dist",
+    "baseUrl": "./src",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
@@ -11,7 +12,12 @@
     "declaration": true,
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "*": [
+        "src/types/*"
+      ]
+    }
   },
   "include": [
     "src"

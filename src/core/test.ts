@@ -1,4 +1,4 @@
-import { TestStatus } from '../types';
+import { It, TestStatus } from '../types';
 import { activeSuite } from './manager';
 
 /**
@@ -7,7 +7,7 @@ import { activeSuite } from './manager';
  * @param name
  * @param fn
  */
-export const test = (name: string, fn: () => void) => {
+const it = (name: string, fn: () => void) => {
   const suite = activeSuite();
   suite.tests.push({
     name,
@@ -15,3 +15,15 @@ export const test = (name: string, fn: () => void) => {
     status: TestStatus.Queued,
   });
 };
+
+it.only = (name: string, fn: () => void) => {
+  const suite = activeSuite();
+  suite.constraints?.only?.push({ name, fn, status: TestStatus.Queued });
+};
+
+it.skip = (name: string, fn: () => void) => {
+  const suite = activeSuite();
+  suite.constraints?.skip?.push({ name, fn, status: TestStatus.Disabled });
+};
+
+export const test: It = it;

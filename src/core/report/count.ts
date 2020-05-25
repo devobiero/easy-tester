@@ -1,6 +1,6 @@
-import { Suite, TestFunction, TestStatus } from '../../types';
+import { DoneCallback, Suite, TestStatus } from '../../types';
 
-export const countByStatus = (allTests: TestFunction[], status: TestStatus) => {
+export const countByStatus = (allTests: DoneCallback[], status: TestStatus) => {
   return allTests.reduce((total, t) => {
     if (t.status === status) {
       total++;

@@ -1,4 +1,16 @@
-export * from './custom';
+export type Config = {
+  group: Suite[];
+};
+
+declare global {
+  namespace NodeJS {
+    interface Global {
+      expect: any;
+      test: (name: string, fn: () => void) => void;
+      easy: Config;
+    }
+  }
+}
 
 export type Arg = boolean | object | number | string;
 
@@ -29,26 +41,36 @@ export type RegexConfig = DirConfig & { testRegex: string };
 
 export type TestFileConfig = FileNameConfig | RegexConfig;
 
-export type TestFunction = {
+export type DoneCallback = {
   name: string;
   fn: () => void;
   status: TestStatus;
 };
 
-export type VoidFunction = () => void;
+export type ProvidesCallback = () => void;
+
+export interface It {
+  (name: string, fn: ProvidesCallback): void;
+  only(name: string, fn: ProvidesCallback): void;
+  skip(name: string, fn: ProvidesCallback): void;
+}
 
 export type Suite = {
+  constraints?: {
+    only?: DoneCallback[];
+    skip?: DoneCallback[];
+  };
   name: string;
   hooks: {
     before: {
-      all: VoidFunction;
-      each: VoidFunction;
+      all: ProvidesCallback;
+      each: ProvidesCallback;
     };
     after: {
-      all: VoidFunction;
-      each: VoidFunction;
+      all: ProvidesCallback;
+      each: ProvidesCallback;
     };
   };
-  tests: TestFunction[];
-  cb: VoidFunction;
+  tests: DoneCallback[];
+  cb: ProvidesCallback;
 };

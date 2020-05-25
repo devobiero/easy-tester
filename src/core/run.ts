@@ -1,14 +1,14 @@
-import { Config, TestFunction, TestStatus } from '../types';
+import { Config, DoneCallback, TestStatus } from '../types';
 import { repeat } from '../utils';
 import { log } from './report';
 
-const fail = (t: TestFunction, e: Error) => {
+const fail = (t: DoneCallback, e: Error) => {
   t.status = TestStatus.Fail;
   log(`${repeat(' ', 4)} ❌ ${t.name}
   ${e.stack}`);
 };
 
-const pass = (t: TestFunction) => {
+const pass = (t: DoneCallback) => {
   log(`${repeat(' ', 4)} ✅ ${t.name}`);
   t.status = TestStatus.Success;
 };
