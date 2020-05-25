@@ -55,22 +55,26 @@ export interface It {
   skip(name: string, fn: ProvidesCallback): void;
 }
 
+export type Hook = {
+  before: {
+    all: ProvidesCallback;
+    each: ProvidesCallback;
+  };
+  after: {
+    all: ProvidesCallback;
+    each: ProvidesCallback;
+  };
+};
+
+export type Constraint = {
+  only?: DoneCallback[];
+  skip?: DoneCallback[];
+};
+
 export type Suite = {
-  constraints?: {
-    only?: DoneCallback[];
-    skip?: DoneCallback[];
-  };
+  constraints?: Constraint;
   name: string;
-  hooks: {
-    before: {
-      all: ProvidesCallback;
-      each: ProvidesCallback;
-    };
-    after: {
-      all: ProvidesCallback;
-      each: ProvidesCallback;
-    };
-  };
+  hooks: Hook;
   tests: DoneCallback[];
   cb: ProvidesCallback;
 };
