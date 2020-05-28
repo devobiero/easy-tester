@@ -1,7 +1,7 @@
 import { It, TestStatus } from '../types';
 import { addTest } from './manager';
 
-const it = (name: string, fn: () => void) => {
+const test = (name: string, fn: () => void) => {
   addTest({
     name,
     fn,
@@ -9,7 +9,7 @@ const it = (name: string, fn: () => void) => {
   });
 };
 
-it.only = (name: string, fn: () => void) => {
+test.only = (name: string, fn: () => void) => {
   addTest({
     name,
     fn,
@@ -17,7 +17,7 @@ it.only = (name: string, fn: () => void) => {
   });
 };
 
-it.skip = (name: string, fn: () => void) => {
+test.skip = (name: string, fn: () => void) => {
   addTest({
     name,
     fn,
@@ -25,4 +25,4 @@ it.skip = (name: string, fn: () => void) => {
   });
 };
 
-export const test: It = it;
+export const it: It = test;

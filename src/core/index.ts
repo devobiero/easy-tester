@@ -7,4 +7,4 @@ export * from './validateArgs';
 export * from './configure';
 export * from './describe';
 export * from './hooks';
-export * from './test';
+export * from './it';

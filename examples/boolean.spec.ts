@@ -1,13 +1,13 @@
-import { afterEach, beforeEach, describe, expect, test } from '../src';
+import { afterEach, beforeEach, describe, expect, it } from '../src';
 
 describe('Booleans', () => {
   beforeEach(() => {});
 
-  test('should be truthy', () => {
+  it('should be truthy', () => {
     expect(true).toBeTruthy();
   });
 
-  test('should be falsy', () => {
+  it('should be falsy', () => {
     expect(false).toBeFalsy();
   });
 

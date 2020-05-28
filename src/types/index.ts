@@ -71,13 +71,7 @@ export type AfterHook = {
   };
 };
 
-export type Constraint = {
-  only?: DoneCallback[];
-  skip?: DoneCallback[];
-};
-
 export type Suite = {
-  constraints?: Constraint;
   name: string;
   hooks: BeforeHook & AfterHook;
   tests: DoneCallback[];
