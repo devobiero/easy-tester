@@ -1,9 +1,10 @@
+import { Config } from '../types';
 import { log } from './report';
 
-export const validateArgs = (args: string[]) => {
+export const validateArgs = (config: Config) => {
   let noDir = true;
   let noPattern = true;
-  for (const arg of args) {
+  for (const arg of config.args) {
     const parts = arg.split('=');
     if (parts.includes('--rootDir')) {
       noDir = false;
@@ -24,5 +25,5 @@ export const validateArgs = (args: string[]) => {
     process.exit(1);
   }
 
-  return args;
+  return config.args;
 };

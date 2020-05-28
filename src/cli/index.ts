@@ -8,11 +8,12 @@ import {
 } from '../core';
 import { compose, filterFiles, findPath } from '../utils';
 
+const args = process.argv.slice(2);
+
 global.easy = {
   group: [],
+  args,
 };
-
-const args = process.argv.slice(2);
 
 const execute = (...fns: any[]) => fns.reduce(compose);
 
@@ -25,4 +26,4 @@ execute(
   findPath,
   configure,
   validateArgs,
-)(args);
+)(global.easy);

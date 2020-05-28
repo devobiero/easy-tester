@@ -1,5 +1,6 @@
 export type Config = {
   group: Suite[];
+  args: string[];
 };
 
 declare global {
