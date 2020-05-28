@@ -1,4 +1,11 @@
-import { Config, DoneCallback, Suite } from '../types';
+import {
+  Config,
+  DoneCallback,
+  Hook,
+  isAfterHook,
+  isBeforeHook,
+  Suite,
+} from '../types';
 
 /**
  * enqueue a test with a status
@@ -8,6 +15,29 @@ import { Config, DoneCallback, Suite } from '../types';
 export const addTest = (test: DoneCallback) => {
   const suite = activeSuite();
   suite.tests.push(test);
+};
+
+/**
+ * load pre and post hooks that are required to run each test case
+ *
+ * @param hook
+ */
+export const addHook = (hook: Hook) => {
+  const suite = activeSuite();
+
+  if (isBeforeHook(hook)) {
+    if (hook.before.all) {
+      suite.hooks.before.all = hook.before.all;
+    } else {
+      suite.hooks.before.each = hook.before.each;
+    }
+  } else if (isAfterHook(hook)) {
+    if (hook.after.all) {
+      suite.hooks.after.all = hook.after.all;
+    } else {
+      suite.hooks.after.each = hook.after.each;
+    }
+  }
 };
 
 /**

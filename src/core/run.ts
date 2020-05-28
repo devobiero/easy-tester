@@ -16,24 +16,27 @@ const pass = (t: DoneCallback) => {
 /**
  * runs all the tests in the `groups` array while at the same time
  * keeping track of all the pre and post hooks defined
+ * also skips any tests that are disabled
  *
- * If there is an exception it means the test ran successfully
  */
 export const run = (easy: Config) => {
   for (const group of easy.group) {
+    let tests = group.tests.filter((t) => t.status === TestStatus.Queued);
+    const only = group.tests.filter((t) => t.status === TestStatus.Only);
+    if (only.length) tests = only;
     log(`📥 ${group.name}`);
-    group.hooks.before.all();
-    for (const t of group.tests) {
+    if (group.hooks.before.all) group.hooks.before.all();
+    for (const t of tests) {
       try {
-        group.hooks.before.each();
+        if (group.hooks.before.each) group.hooks.before.each();
         t.fn();
         pass(t);
-        group.hooks.after.each();
+        if (group.hooks.after.each) group.hooks.after.each();
       } catch (e) {
         fail(t, e);
       }
     }
-    group.hooks.after.all();
+    if (group.hooks.after.all) group.hooks.after.all();
   }
 
   return easy;

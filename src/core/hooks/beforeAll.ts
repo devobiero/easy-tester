@@ -1,6 +1,9 @@
-import { activeSuite } from '../manager';
+import { addHook } from '../manager';
 
 export const beforeAll = (fn: () => void) => {
-  const suite = activeSuite();
-  suite.hooks.before.all = fn;
+  addHook({
+    before: {
+      all: fn,
+    },
+  });
 };

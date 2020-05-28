@@ -56,14 +56,17 @@ export interface It {
   skip(name: string, fn: ProvidesCallback): void;
 }
 
-export type Hook = {
+export type BeforeHook = {
   before: {
-    all: ProvidesCallback;
-    each: ProvidesCallback;
+    all?: ProvidesCallback;
+    each?: ProvidesCallback;
   };
+};
+
+export type AfterHook = {
   after: {
-    all: ProvidesCallback;
-    each: ProvidesCallback;
+    all?: ProvidesCallback;
+    each?: ProvidesCallback;
   };
 };
 
@@ -75,7 +78,17 @@ export type Constraint = {
 export type Suite = {
   constraints?: Constraint;
   name: string;
-  hooks: Hook;
+  hooks: BeforeHook & AfterHook;
   tests: DoneCallback[];
   cb: ProvidesCallback;
 };
+
+export function isBeforeHook(hook: BeforeHook | AfterHook): hook is BeforeHook {
+  return (hook as BeforeHook).before !== undefined;
+}
+
+export function isAfterHook(hook: BeforeHook | AfterHook): hook is BeforeHook {
+  return (hook as AfterHook).after !== undefined;
+}
+
+export type Hook = BeforeHook | AfterHook;
