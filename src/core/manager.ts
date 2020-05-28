@@ -13,7 +13,7 @@ import {
  * @param test
  */
 export const addTest = (test: DoneCallback) => {
-  const suite = activeSuite();
+  const suite = getActiveSuite();
   suite.tests.push(test);
 };
 
@@ -23,7 +23,7 @@ export const addTest = (test: DoneCallback) => {
  * @param hook
  */
 export const addHook = (hook: Hook) => {
-  const suite = activeSuite();
+  const suite = getActiveSuite();
 
   if (isBeforeHook(hook)) {
     if (hook.before.all) {
@@ -43,7 +43,7 @@ export const addHook = (hook: Hook) => {
 /**
  * Test suites are held in a queue, the last one is the active suite
  */
-export const activeSuite = () => {
+export const getActiveSuite = () => {
   const suites = global.easy.group;
   return suites[suites.length - 1];
 };
