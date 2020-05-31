@@ -1,4 +1,4 @@
-export * from './assertions/matchers';
+export * from './assertions';
 export * from './assertions';
 export * from './manager';
 export * from './report';
