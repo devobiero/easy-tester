@@ -1,6 +1,9 @@
-name: Easy tester CI
+name: Easy tester CD
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
