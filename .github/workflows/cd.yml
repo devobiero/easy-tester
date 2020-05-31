@@ -1,10 +1,7 @@
-name: Easy tester CI
+name: Easy tester CD
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
     branches:
       - master
 
